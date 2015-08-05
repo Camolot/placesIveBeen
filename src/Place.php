@@ -19,12 +19,12 @@
 
       function setPlace($new_place)
       {
-        $this->place = (string) $place;
+        $this->place = $place;
       }
 
       function setDesc($new_desc)
       {
-        $this->desc = (string) $new_desc;
+        $this->desc = $new_desc;
       }
 
       function getImgPath()
@@ -43,6 +43,20 @@
         return $this->desc;
       }
 
+      function save()
+      {
+          array_push($_SESSION['list_of_places'], $this);
+      }
+
+      static function getAll()
+      {
+          return $_SESSION['list_of_places'];
+      }
+
+      static function deleteAll()
+      {
+          $_SESSION['list_of_places'] = array();
+      }
 
     }
 
